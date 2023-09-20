@@ -35,34 +35,41 @@ string decrypt(string message, int key) {
     return result;
 }
 
-int main() {
-    int choice;
+void printMenu() {
     cout << "Выберите действие:" << endl;
     cout << "1. Зашифровать текст" << endl;
     cout << "2. Расшифровать текст" << endl;
-    cin >> choice;
+    cout << "3. Выход" << endl;
+}
 
-    string message;
-    int key;
-    if (choice == 1) {
-        cout << "Введите текст для шифрования: ";
-        cin.ignore();
-        getline(cin, message);
-        cout << "Введите ключ для шифрования: ";
-        cin >> key;
-        string encrypted = encrypt(message, key);
-        cout << "Зашифрованный текст: " << encrypted << endl;
-    } else if (choice == 2) {
-        cout << "Введите текст для расшифрования: ";
-        cin.ignore();
-        getline(cin, message);
-        cout << "Введите ключ для расшифрования: ";
-        cin >> key;
-        string decrypted = decrypt(message, key);
-        cout << "Расшифрованный текст: " << decrypted << endl;
-    } else {
-        cout << "Ошибка: неверный выбор действия." << endl;
-    }
+int main() {
+    int choice;
+    do {
+        printMenu();
+        cin >> choice;
+
+        string message;
+        int key;
+        if (choice == 1) {
+            cout << "Введите текст для шифрования: ";
+            cin.ignore();
+            getline(cin, message);
+            cout << "Введите ключ для шифрования: ";
+            cin >> key;
+            string encrypted = encrypt(message, key);
+            cout << "Зашифрованный текст: " << encrypted << endl;
+        } else if (choice == 2) {
+            cout << "Введите текст для расшифрования: ";
+            cin.ignore();
+            getline(cin, message);
+            cout << "Введите ключ для расшифрования: ";
+            cin >> key;
+            string decrypted = decrypt(message, key);
+            cout << "Расшифрованный текст: " << decrypted << endl;
+        } else if (choice != 3) {
+            cout << "Ошибка: неверный выбор действия." << endl;
+        }
+    } while (choice != 3);
 
     return 0;
 }
